@@ -32,6 +32,37 @@ docker compose up --build
 The image is a multi-stage build using Next.js's `output: "standalone"` — the final runtime
 image only contains the built server and static assets, running as a non-root user.
 
+## Continuous deployment
+
+`.github/workflows/deploy.yml` deploys to a server over SSH (password auth) on every push to
+`master`: it logs in, `git pull`s, and runs `docker compose up -d --build`.
+
+**One-time server setup** (only needs to happen once):
+
+```bash
+git clone https://github.com/Samad126/alakbaroff-homepage.git /path/to/app
+cd /path/to/app
+docker compose up -d --build   # confirm it runs before wiring up CI
+```
+
+The server needs Docker + the Compose plugin installed, and `git pull` must work
+unattended — if the repo is private, set up a credential helper or a deploy key on the
+server for that.
+
+**Required GitHub Actions secrets** (`gh secret set <NAME>`, or Settings → Secrets and
+variables → Actions):
+
+| Secret | Value |
+|---|---|
+| `DEPLOY_HOST` | Server hostname or IP |
+| `DEPLOY_PORT` | SSH port (defaults to `22` if unset) |
+| `DEPLOY_USER` | SSH username |
+| `DEPLOY_PASSWORD` | SSH password for that user |
+| `DEPLOY_PATH` | Absolute path to the cloned repo on the server |
+
+Set secrets from your own terminal (not by pasting the password into a chat) —
+`gh secret set DEPLOY_PASSWORD` prompts for the value without echoing it.
+
 ## Before you deploy
 
 1. **`lib/site.ts`** → replace `url` with your real domain (drives OG tags, `sitemap.xml`, `robots.txt`).
