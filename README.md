@@ -34,8 +34,9 @@ image only contains the built server and static assets, running as a non-root us
 
 ## Continuous deployment
 
-`.github/workflows/deploy.yml` deploys to a server over SSH (password auth) on every push to
-`master`: it logs in, `git pull`s, and runs `docker compose up -d --build`.
+`.github/workflows/deploy.yml` deploys to a server over SSH (password auth, via `sshpass`) on
+every push to `master`: it logs in, `git pull`s, and runs
+`docker compose up -d --no-deps --build web`.
 
 **One-time server setup** (only needs to happen once):
 
