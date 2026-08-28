@@ -26,12 +26,14 @@ bun run build && bun run start
 docker build -t alakbaroff-homepage .
 docker run -p 3000:3000 alakbaroff-homepage
 # or:
-docker compose up --build
+docker compose up --build   # published on host port 3002 (see docker-compose.yml)
 ```
 
 The image is a multi-stage build on `oven/bun`, using Next.js's `output: "standalone"` — the
 final runtime image only contains the built server and static assets, running as a non-root
-user under `bun server.js`.
+user under `bun server.js`. `docker-compose.yml` publishes on host port `3002` instead of
+`3000` because the deploy server already runs other services on `3000`/`3001` — the container
+still listens on `3000` internally, only the host-side mapping changed.
 
 ## Continuous deployment
 
