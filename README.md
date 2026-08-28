@@ -1,6 +1,6 @@
 # Samad Alakbarov — Portfolio
 
-A single-page portfolio site built with **Next.js 15 (App Router) · React 19 · TypeScript · GSAP + ScrollTrigger**.
+A single-page portfolio site built with **Next.js 15 (App Router) · React 19 · TypeScript · GSAP + ScrollTrigger**, using **Bun** as the package manager and runtime.
 
 ## The idea
 
@@ -15,9 +15,9 @@ timeline, a toolkit list, education/languages, and a contact section that flips 
 ## Run it
 
 ```bash
-npm install
-npm run dev      # http://localhost:3000
-npm run build && npm start
+bun install
+bun run dev      # http://localhost:3000
+bun run build && bun run start
 ```
 
 ## Run it with Docker
@@ -29,8 +29,9 @@ docker run -p 3000:3000 alakbaroff-homepage
 docker compose up --build
 ```
 
-The image is a multi-stage build using Next.js's `output: "standalone"` — the final runtime
-image only contains the built server and static assets, running as a non-root user.
+The image is a multi-stage build on `oven/bun`, using Next.js's `output: "standalone"` — the
+final runtime image only contains the built server and static assets, running as a non-root
+user under `bun server.js`.
 
 ## Continuous deployment
 
