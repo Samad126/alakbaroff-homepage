@@ -19,10 +19,95 @@ export const person = {
 } as const;
 
 export const navLinks = [
+  { href: "#experience", label: "Experience" },
   { href: "#work", label: "Work" },
   { href: "#skills", label: "Skills" },
-  { href: "#education", label: "Education" },
-  { href: "#contact", label: "Contact" },
+  { href: "#about", label: "About" },
+] as const;
+
+/** Background-removed cut-outs live in public/. */
+export const portrait = "/portrait.png";
+export const portraitFull = "/portrait-full.png";
+
+export const marquee = [
+  "React", "Next.js", "TypeScript", "NestJS", "Node.js", "React Native", "Redux Toolkit",
+  "TanStack Query", "WebSockets", "Prisma", "PostgreSQL", "Tailwind", "Zod", "Vitest", "Docker",
+] as const;
+
+export const whatIDo = [
+  {
+    title: "Frontend",
+    text: "React and Next.js interfaces with strict TypeScript, complex state and real-time data. Dashboards, forms and flows that stay fast and accessible.",
+    link: "See work",
+    href: "#work",
+  },
+  {
+    title: "Backend",
+    text: "NestJS and Node.js APIs with Prisma and PostgreSQL. JWT, role-based access and schema validation built in from the first endpoint.",
+    link: "See skills",
+    href: "#skills",
+  },
+  {
+    title: "Quality",
+    text: "Unit and integration tests, Lighthouse audits, semantic HTML and ARIA. AI-assisted code is reviewed and security-checked before it merges.",
+    link: "How I work",
+    href: "#about",
+  },
+] as const;
+
+export const projects = [
+  {
+    client: "Personal project · Live",
+    title: "Nextudy",
+    result: "AI-powered collaborative study platform: generated questions, flashcards, quizzes and shared workspaces.",
+    tags: ["Next.js", "AI", "Collaboration"],
+    href: "https://nextudy.alakbaroff.com",
+    image: "/project-nextudy.png",
+  },
+  {
+    client: "Personal project · Live",
+    title: "File Converter",
+    result: "Converts documents, PDFs, audio and video. No account, and nothing is kept.",
+    tags: ["Next.js", "Documents", "Audio & video"],
+    href: "https://converter.alakbaroff.com",
+    image: "/project-converter.png",
+  },
+  {
+    client: "KODAZE LTD",
+    title: "Fintech analytics dashboard",
+    result: "HR, contracts, user admin and accounting in one RBAC-secured workspace.",
+    tags: ["Next.js", "TypeScript", "Zod"],
+  },
+  {
+    client: "KODAZE LTD",
+    title: "AI writing assistant",
+    result: "Corrections streamed back in real time over WebSockets, in a responsive, accessible UI.",
+    tags: ["React", "NestJS", "WebSockets"],
+  },
+  {
+    client: "Bridge Spero",
+    title: "Education platform",
+    result: "Led three developers. JWT auth with separate teacher and student roles.",
+    tags: ["Next.js", "App Router", "React Hook Form"],
+  },
+  {
+    client: "OENVA LLC",
+    title: "Knowledge competition app",
+    result: "300+ daily active users, with scoring logic, auth and responsive quiz screens.",
+    tags: ["React", "Lighthouse", "ARIA"],
+  },
+] as const;
+
+export const numbers = [
+  { value: "2+", label: "years in production" },
+  { value: "300+", label: "daily active users on one app" },
+  { value: "3", label: "developers led" },
+] as const;
+
+export const bio = [
+  "I build the screens people use and the APIs behind them. Most of my work has been in fintech, AI and education, where the interface has to be fast, correct and safe with other people's data.",
+  "My work sits between frontend craft and backend discipline. I care about types, validation, tests and accessibility, and I use AI coding tools daily on the condition that I review, test and security-check what they write.",
+  "I live in Baku and speak Azerbaijani, English and a little Russian.",
 ] as const;
 
 export const statement = {
@@ -44,16 +129,16 @@ export type Role = {
 
 export const experience: Role[] = [
   {
-    when: "Apr 2026 — Present",
+    when: "Apr 2026 — Sep 2026",
     place: "Baku",
     title: "JavaScript Software Engineer Intern",
     org: "EPAM Systems",
     points: [
       "Building on enterprise-scale projects inside a global engineering organisation.",
-      "Writing unit and integration tests with Jest and React Testing Library so refactoring stays safe.",
+      "Writing unit and integration tests with Vitest so refactoring stays safe.",
       "Driving AI coding assistants with precise prompts, then reviewing, testing and security-checking the output before merge.",
     ],
-    tags: ["React", "Jest", "RTL", "Copilot", "Cursor", "Claude Code"],
+    tags: ["React", "Vitest", "Copilot", "Cursor", "Claude Code"],
   },
   {
     when: "Oct 2025 — Dec 2025",
@@ -119,7 +204,7 @@ export const skillRows = [
       "JWT, refresh tokens, protected routes, RBAC, input sanitisation with Zod, dependency vulnerability scanning, OAuth2",
   },
   {
-    label: "Testing & a11y",
+    label: "Testing & accessibility",
     value:
       "Jest, React Testing Library, unit & integration testing, semantic HTML, ARIA, Lighthouse audits",
   },

@@ -1,30 +1,35 @@
 import { Nav } from "@/components/nav";
-import { ScrollFx } from "@/components/scroll-fx";
+import { Cursor } from "@/components/cursor";
+import { Footer } from "@/components/footer";
 import { Hero } from "@/components/sections/hero";
-import { Statement } from "@/components/sections/statement";
+import { Marquee } from "@/components/sections/marquee";
+import { What } from "@/components/sections/what";
+import { Experience } from "@/components/sections/experience";
 import { Work } from "@/components/sections/work";
 import { Skills } from "@/components/sections/skills";
-import { Education } from "@/components/sections/education";
+import { Numbers } from "@/components/sections/numbers";
+import { Statement } from "@/components/sections/statement";
+import { About } from "@/components/sections/about";
 import { Contact } from "@/components/sections/contact";
 
 export default function Home() {
   return (
     <>
-      <div className="field" aria-hidden="true"></div>
-      <div className="grain" aria-hidden="true"></div>
-
+      <Cursor />
       <Nav />
-
       <main>
         <Hero />
-        <Statement />
+        <Marquee />
+        <What />
+        <Experience />
         <Work />
         <Skills />
-        <Education />
+        <Numbers />
+        <Statement />
+        <About />
         <Contact />
       </main>
-
-      <ScrollFx />
+      <Footer />
     </>
   );
 }
